@@ -101,7 +101,7 @@ void display() {
 int main() {
   while (1 > 0) {
     int i;
-    printf("\n1. Insert \n2. Display \n3. Delete\n4. Exit\n");
+    printf("1. Insert \n2. Display \n3. Delete\n4. Exit\n");
     scanf("%d", &i);
     switch (i) {
     case 1: {
