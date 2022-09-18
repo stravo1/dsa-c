@@ -47,6 +47,10 @@ void insert_pos(int k, int pos) {
   for (int i = 0; i < pos - 2; i++) { // we need to iterate, at max, pos - 2
                                       // times to reach the node before pos
     n = n->next;
+    if (!n) {
+      printf("Position doesn't exist!\n");
+      return;
+    }
   }
 
   node *new = (node *)malloc(sizeof(node)); // create new node
@@ -95,6 +99,10 @@ int delete_pos(int pos) {
   node *n = head;
   for (int i = 0; i < pos - 2; i++) { // iterate pos - 2 times
     n = n->next;                      // reach the node before pos
+    if (!n) {
+      printf("Position doesn't exist!\n");
+      return -1;
+    }
   }
   node *del = n->next; // node to be deleted
   n->next = del->next; // skip a node
