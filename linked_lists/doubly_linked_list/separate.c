@@ -48,6 +48,10 @@ void insert_pos(int k, int pos) {
     printf("Linked list has not yet been initialized\n");
     return;
   }
+  if (pos < 1) {
+    printf("Position has to be 1 and more.\n");
+    return;
+  }
 
   if (pos == 1) { // self explanatory :)
     insert_first(k);
@@ -111,6 +115,14 @@ int delete_pos(int pos) {
   if (!head) {
     printf("Linked list has not yet been initialized\n");
     return -1;
+  }
+  if (pos < 1) {
+    printf("Position has to be 1 and more.\n");
+    return -1;
+  }
+
+  if (pos == 1) {
+    return delete_first();
   }
 
   node *n = head;

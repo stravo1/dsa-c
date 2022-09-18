@@ -43,6 +43,14 @@ void insert_pos(int k, int pos) {
     printf("Linked list has not yet been initialized\n");
     return;
   }
+  if (pos < 1) {
+    printf("Position has to be 1 and more\n");
+    return;
+  }
+  if (pos == 1) {
+    insert_first(k);
+    return;
+  }
   node *n = head;                     // we are already at head
   for (int i = 0; i < pos - 2; i++) { // we need to iterate, at max, pos - 2
                                       // times to reach the node before pos
@@ -95,7 +103,14 @@ int delete_pos(int pos) {
     printf("Linked list has not yet been initialized\n");
     return -1;
   }
+  if (pos < 1) {
+    printf("Position has to be 1 and more.\n");
+    return -1;
+  }
 
+  if (pos == 1) {
+    return delete_first();
+  }
   node *n = head;
   for (int i = 0; i < pos - 2; i++) { // iterate pos - 2 times
     n = n->next;                      // reach the node before pos
