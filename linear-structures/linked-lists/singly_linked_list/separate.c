@@ -143,10 +143,44 @@ void display() {
   printf("\n");
 }
 
+void reverse() {
+  if (!head) {
+    printf("Linked list has not yet been initialized\n");
+    return;
+  }
+  if (!head->next) { // single node case
+    printf("Linked list has only one node. No need of reversing!\n");
+    return;
+  }
+
+  node *x, *y;
+  x = head;
+
+  y = x->next;
+  x->next = NULL;
+
+  if (!y->next) { // two nodes case
+    y->next = x;
+    head = y;
+    return;
+  }
+  /* rest cases */
+  head = y->next;
+  y->next = x;
+
+  while (head->next) {
+    x = y;
+    y = head;
+    head = head->next;
+    y->next = x;
+  }
+  head->next = y;
+}
+
 int main() {
   while (1 > 0) {
     int i;
-    printf("1. Insert \n2. Display \n3. Delete\n4. Exit\n");
+    printf("1. Insert \n2. Display \n3. Delete\n4. Reverse\n5. Exit\n");
     scanf("%d", &i);
     switch (i) {
     case 1: {
@@ -208,6 +242,9 @@ int main() {
       break;
     }
     case 4:
+      reverse();
+      break;
+    case 5:
       exit(1);
     default:
       printf("Choose again\n");
