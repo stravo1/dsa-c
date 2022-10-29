@@ -98,20 +98,33 @@ int delete_first() {
     printf("Linked list has not yet been initialized\n");
     return -1;
   }
+  /*
+node *del = head;  // node to be deleted
+head = head->next; // make head point to the next node
+del->next =
+NULL; // make sure that the linked list can't be accessed in any way
 
-  node *del = head;  // node to be deleted
-  head = head->next; // make head point to the next node
-  del->next =
-      NULL; // make sure that the linked list can't be accessed in any way
+node *n = head;
+while (n->next != del) { // traverse till end
+n = n->next;
+}
+n->next = head; // make it point to new head
 
+int val = del->key;
+free(del);
+return val;
+  */
+
+  /* using only a single pointer */
   node *n = head;
-  while (n->next != del) { // traverse till end
+  while (n->next != head) { // traverse till the end of the list
     n = n->next;
   }
-  n->next = head; // make it point to new head
-
-  int val = del->key;
-  free(del);
+  n->next = head->next; // skip a node from the beginning
+  head->next = NULL;    // remove accessed
+  int val = head->key;  // eaxtract value
+  free(head);           // deallocate memory
+  head = n->next;       // update head
   return val;
 }
 
