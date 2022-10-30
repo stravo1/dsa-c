@@ -23,9 +23,9 @@ int operate(char operator, int operand1, int operand2) { // perform the operatio
   }
 }
 
-int eval(char exp[]) {                   // take in the postfix expression
-  for (int i = 0; exp[i] != '\0'; i++) { // traverse the string
-    char c = exp[i];                     // pick thr next character
+int evaluate(char expression[]) {                   // take in the postfix expression
+  for (int i = 0; expression[i] != '\0'; i++) { // traverse the string
+    char c = expression[i];                     // pick the next character
 
     if (c == ' ') // ignore spaces
       continue;
@@ -55,5 +55,5 @@ int main() {
   printf("Enter expression\n");
   scanf("%[^\n]", exp); // get the expression from the user
 
-  printf("%d\n", eval(exp)); // print the result
+  printf("%d\n", evaluate(exp)); // print the result
 }
