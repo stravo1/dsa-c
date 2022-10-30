@@ -12,11 +12,11 @@ int operate(char operator, int operand1, int operand2) { // perform the operatio
   case '+':
     return (operand1 + operand2);
   case '-':
-    return (operand1 - operand2);
+    return (operand2 - operand1);
   case '*':
     return (operand1 * operand2);
   case '/':
-    return (operand1 / operand2);
+    return (operand2 / operand1);
   default:
     printf("ERROR!\nPlease try again!\n");
     return -1;
