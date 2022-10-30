@@ -7,16 +7,16 @@ int isDigit(char c) { // to check whether the char is a digit or ot
   return 0;
 }
 
-int operate(char sym, int op1, int op2) { // perform the operation
-  switch (sym) {
+int operate(char operator, int operand1, int operand2) { // perform the operation
+  switch (operator) {
   case '+':
-    return (op1 + op2);
+    return (operand1 + operand2);
   case '-':
-    return (op1 - op2);
+    return (operand1 - operand2);
   case '*':
-    return (op1 * op2);
+    return (operand1 * operand2);
   case '/':
-    return (op1 / op2);
+    return (operand1 / operand2);
   default:
     printf("ERROR!\nPlease try again!\n");
     return -1;
@@ -51,8 +51,7 @@ int main() {
 
   char exp[MAX]; // make an character array of size MAX
 
-  printf("|| This program supports only single digit values and basic "
-         "operations ||\n");
+  printf("!! This program supports only SINGLE digit values and basic operations !!\n");
   printf("Enter expression\n");
   scanf("%[^\n]", exp); // get the expression from the user
 
