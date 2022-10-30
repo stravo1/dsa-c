@@ -73,6 +73,12 @@ int delete_last() {
     printf("Linked list has not yet been initialized\n");
     return -1;
   }
+  if (!head->next) { // there is no 2nd last element, it's just the head
+    int val = head->key;
+    free(head);
+    head = NULL;
+    return val;
+  }
   node *n = head;
   while (n->next->next) { // go to the 2nd last element
     n = n->next;
