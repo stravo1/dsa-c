@@ -1,7 +1,7 @@
 #include "stack.c" // include the stack file
-#define MAX 100
+#define MAX 100 // max size of expression
 
-int isDigit(char c) { // to check whether the char is a digit or ot
+int isDigit(char c) { // to check whether the char is a digit or not
   if (c >= '0' && c <= '9')
     return 1;
   return 0;
