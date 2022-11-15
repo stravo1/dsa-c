@@ -11,6 +11,13 @@ void push(int x) {
   stack[++top] = x;
 }
 
+int peek() {
+  if (top == -1) {
+    return -1;
+  }
+  return (stack[top]);
+}
+
 int pop() {
   if (top == -1) {
     printf("Stack empty!\n");
