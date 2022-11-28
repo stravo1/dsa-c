@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-void display(int arr[]) {
-  for (int i = 0; i < 10; i++) {
+void display(int arr[], int size) {
+  for (int i = 0; i < size; i++) {
     printf("%d\t", arr[i]);
   }
   printf("\n");
@@ -12,7 +12,7 @@ int partition(int start, int end, int arr[]) {
 
   /* start from the beginning and look till the end
    * everytime you find an element smaller than or equal to the pivot swap that
-   * with resultIndex amd incrent the resultIndex
+   * with resultIndex and incrent the resultIndex
    * this ensures all elements
    * before resultIndex id smaller than or equal to pivot
    * */
@@ -20,7 +20,7 @@ int partition(int start, int end, int arr[]) {
   for (int i = start; i < end;
        i++) { // loop variant: at each iteration all elements before
               // resultIndex is less than or equal to pivot
-    if (arr[i] <= pivot) { // swap a[i] with arr[resultIndex<
+    if (arr[i] <= pivot) { // swap a[i] with arr[resultIndex]
       int temp = arr[i];
       arr[i] = arr[resultIndex];
       arr[resultIndex] = temp;
@@ -60,5 +60,5 @@ int main() {
 
   quick(0, size - 1, arr);
   printf("Sorted array: ");
-  display(arr);
+  display(arr, size);
 }
