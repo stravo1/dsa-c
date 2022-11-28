@@ -12,7 +12,7 @@ int partition(int start, int end, int arr[]) {
 
   /* start from the beginning and look till the end
    * everytime you find an element smaller than or equal to the pivot swap that
-   * with resultIndex and incrent the resultIndex
+   * with resultIndex and increment the resultIndex
    * this ensures all elements
    * before resultIndex id smaller than or equal to pivot
    * */
