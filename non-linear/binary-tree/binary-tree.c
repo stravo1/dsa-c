@@ -45,15 +45,15 @@ void inorder(node *r) {
 void preorder(node *r) {
   if (r) {
     printf("%d\t", r->key);
-    inorder(r->left);
-    inorder(r->right);
+    preorder(r->left);
+    preorder(r->right);
   }
 }
 
 void postorder(node *r) {
   if (r) {
-    inorder(r->left);
-    inorder(r->right);
+    postorder(r->left);
+    postorder(r->right);
     printf("%d\t", r->key);
   }
 }
