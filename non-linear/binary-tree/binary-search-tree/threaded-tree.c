@@ -47,7 +47,7 @@ node *inorder_pred(
     } else {       // required key is larger than node
       store = t;   // store this pointer as currently this is the last pointer
                    // from which we went right
-      t = t->rptr; // go to left
+      t = t->rptr; // go to right
     }
   }
   return store;
