@@ -72,25 +72,6 @@ void insert() {
   }
 }
 
-void findAddr(int k) {
-  NODE *r = root;
-  parent = NULL;
-  child = root; // if root has the key then the while loop wont execute
-  while (r->key != k) {
-    if (!r->left && !r->right) {
-      parent = child = NULL;
-      return;
-    }
-    parent = r;
-    if (k > r->key) {
-      r = r->right;
-    } else {
-      r = r->left;
-    }
-  }
-  child = r;
-}
-
 void process_post(NODE *root) {
 
   while (root) { // go to the left most node of the given root
