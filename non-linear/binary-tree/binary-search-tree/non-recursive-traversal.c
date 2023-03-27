@@ -145,26 +145,43 @@ void inorder() {
 }
 
 void process_pre(NODE *root) {
-
-  while (root) { // similar to post but herewe go to the rightmost node first
-
-    /* create a member which will be inserted in the stack */
+  /* much simpler to understand than the previous two processes: put node to the
+   * top of the stack and then the left and right nodes marking them to further
+   * processed
+   * */
+  if (root->right) { // if right of node exists push node with flag
     PTR *n = (PTR *)malloc(sizeof(PTR));
-    n->ptr = root;
-    n->flag = 0;
-    push(n);
-
-    if (root->left) { // if right of node exists push node with flag
-      PTR *n = (PTR *)malloc(sizeof(PTR));
-      n->ptr = root->left; // pushing the right node
-      n->flag = 1;         // setting flag that it needs to be processed further
-      push(n);             // push the right node
-    }
-    root = root->right;
+    n->ptr = root->right; // pushing the right node
+    n->flag = 1;          // setting flag that it needs to be processed further
+    push(n);              // push the right node
   }
+  /* right pushed first, thus at the bottom of the stack */
+
+  if (root->left) { // if right of node exists push node with flag
+    PTR *n = (PTR *)malloc(sizeof(PTR));
+    n->ptr = root->left; // pushing the right node
+    n->flag = 1;         // setting flag that it needs to be processed further
+    push(n);             // push the right node
+  }
+  /* left child is now at the middle */
+
+  // push the actual node at the end, thus it will be popped first
+  PTR *n = (PTR *)malloc(sizeof(PTR));
+  n->ptr = root;
+  n->flag = 0; // mark is to be processed already
+  push(n);
+  /* ths stack looks like:
+   * | node  - 0 |
+   * | left  - 1 |
+   * | right - 1 |
+   * _____________
+   */
 }
 
 void preorder() {
+  /*
+   * the actual node will be popped first and then the left and right child will
+   * be processed again and this process continues*/
   NODE *ptr = root;
   if (!ptr) {
     printf("No tree yet :(\n");
