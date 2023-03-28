@@ -108,7 +108,7 @@ void insert() {
 }
 
 node *get_inorder_succ(node *n) {
-  if (n->rptr) { // if thread is present
+  if (n->bit) { // if thread is present
     return n->rptr;
   }
   node *temp = n->rptr;
