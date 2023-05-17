@@ -11,7 +11,7 @@ typedef struct Node {
 
 node *dummy;
 
-node *inorder_succ(
+node *inorder_succ_for_new_node(
     node *p) { // find the inorder succesor for the leaf node being inserted
   node *store = NULL;
   node *t = dummy->lptr; // this node is used to traverse the tree
@@ -32,7 +32,7 @@ node *inorder_succ(
   return store;
 }
 
-node *inorder_pred(
+node *inorder_pred_for_new_node(
     node *p) { // find the inorder predecessor for the node being inserted
   node *store = NULL;
   node *t = dummy->lptr; // this node is used to traverse the tree
@@ -92,8 +92,8 @@ void insert() {
     r2->lptr = n;
     r2->lbit = 0;
   }
-  node *succ = inorder_succ(n);
-  node *pred = inorder_pred(n);
+  node *succ = inorder_succ_for_new_node(n);
+  node *pred = inorder_pred_for_new_node(n);
 
   if (succ) {
     n->rptr = succ;
@@ -107,8 +107,8 @@ void insert() {
   }
 }
 
-node *get_inorder_succ(node *n) {
-  if (n->bit) { // if thread is present
+node *inorder_succ_for_existing_node(node *n) {
+  if (n->rbit) { // if thread is present
     return n->rptr;
   }
   node *temp = n->rptr;
@@ -118,7 +118,7 @@ node *get_inorder_succ(node *n) {
   return temp;
 }
 
-void inorder() {
+void inorder_traversal() {
   node *temp = dummy->lptr;
   if (!temp) {
     printf("No tree yet :( \n");
@@ -128,10 +128,10 @@ void inorder() {
     temp = temp->lptr;
   }
   printf("%d\t", temp->key);
-  temp = get_inorder_succ(temp);
+  temp = inorder_succ_for_existing_node(temp);
   while (temp != dummy) {
     printf("%d\t", temp->key);
-    temp = get_inorder_succ(temp);
+    temp = inorder_succ_for_existing_node(temp);
   }
   printf("\n");
 }
@@ -160,7 +160,7 @@ int main() {
       break;
     }
     case 2: {
-      inorder();
+      inorder_traversal();
       break;
     }
     case 3: {
