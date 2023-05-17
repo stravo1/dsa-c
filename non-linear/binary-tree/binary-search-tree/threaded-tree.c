@@ -107,7 +107,8 @@ void insert() {
   }
 }
 
-node *inorder_succ_for_existing_node(node *n) {
+node *inorder_succ_for_existing_node(node *n) { // for inorder traversal
+  /* nodes already have their appropriate rbit and lbit set */
   if (n->rbit) { // if thread is present
     return n->rptr;
   }
